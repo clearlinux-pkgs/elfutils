@@ -3,7 +3,6 @@ Configure miss: CFLocaleCopyPreferredLanguages
 Configure miss: CFLocaleCopyPreferredLanguages
 Configure miss: i686-generic-linux-gnu-readelf
 Configure miss: library containing ZSTD_decompress
-Configure miss: library containing ZSTD_decompress
 Configure miss: whether fts.h is bad when included (with LFS)
 Configure miss: whether fts.h is bad when included (with LFS)
 Configure miss: whether to add -D_FORTIFY_SOURCE=2 to CFLAGS

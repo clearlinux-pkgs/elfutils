@@ -11,3 +11,6 @@ xz-dev
 xz-dev32
 zlib-dev
 zlib-dev32
+zstd-dev
+lzo-dev
+lz4-dev
