@@ -7,7 +7,7 @@
 %define keepstatic 1
 Name     : elfutils
 Version  : 0.185
-Release  : 79
+Release  : 80
 URL      : https://sourceware.org/elfutils/ftp/0.185/elfutils-0.185.tar.bz2
 Source0  : https://sourceware.org/elfutils/ftp/0.185/elfutils-0.185.tar.bz2
 Source1  : https://sourceware.org/elfutils/ftp/0.185/elfutils-0.185.tar.bz2.sig
@@ -40,6 +40,7 @@ BuildRequires : xz-dev32
 BuildRequires : zlib-dev
 BuildRequires : zlib-dev32
 BuildRequires : zstd-dev
+Patch1: 0001-libdwfl-fix-potential-NULL-pointer-dereference-when-.patch
 
 %description
 Elfutils is a collection of utilities, including stack (to show
@@ -126,6 +127,7 @@ man components for the elfutils package.
 %prep
 %setup -q -n elfutils-0.185
 cd %{_builddir}/elfutils-0.185
+%patch1 -p1
 pushd ..
 cp -a elfutils-0.185 build32
 popd
@@ -135,7 +137,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1632839319
+export SOURCE_DATE_EPOCH=1633202285
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used "
 export FCFLAGS="$FFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used "
@@ -173,7 +175,7 @@ cd ../build32;
 make %{?_smp_mflags} check || : || :
 
 %install
-export SOURCE_DATE_EPOCH=1632839319
+export SOURCE_DATE_EPOCH=1633202285
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/elfutils
 cp %{_builddir}/elfutils-0.185/COPYING %{buildroot}/usr/share/package-licenses/elfutils/8624bcdae55baeef00cd11d5dfcfa60f68710a02
