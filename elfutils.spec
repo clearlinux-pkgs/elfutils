@@ -6,11 +6,11 @@
 #
 %define keepstatic 1
 Name     : elfutils
-Version  : 0.185
-Release  : 80
-URL      : https://sourceware.org/elfutils/ftp/0.185/elfutils-0.185.tar.bz2
-Source0  : https://sourceware.org/elfutils/ftp/0.185/elfutils-0.185.tar.bz2
-Source1  : https://sourceware.org/elfutils/ftp/0.185/elfutils-0.185.tar.bz2.sig
+Version  : 0.186
+Release  : 81
+URL      : https://sourceware.org/elfutils/ftp/0.186/elfutils-0.186.tar.bz2
+Source0  : https://sourceware.org/elfutils/ftp/0.186/elfutils-0.186.tar.bz2
+Source1  : https://sourceware.org/elfutils/ftp/0.186/elfutils-0.186.tar.bz2.sig
 Summary  : A collection of utilities and DSOs to handle ELF files and DWARF data
 Group    : Development/Tools
 License  : GFDL-1.3 GPL-2.0 GPL-2.0+ GPL-3.0 GPL-3.0+ LGPL-3.0 LGPL-3.0+
@@ -40,7 +40,6 @@ BuildRequires : xz-dev32
 BuildRequires : zlib-dev
 BuildRequires : zlib-dev32
 BuildRequires : zstd-dev
-Patch1: 0001-libdwfl-fix-potential-NULL-pointer-dereference-when-.patch
 
 %description
 Elfutils is a collection of utilities, including stack (to show
@@ -125,11 +124,10 @@ man components for the elfutils package.
 
 
 %prep
-%setup -q -n elfutils-0.185
-cd %{_builddir}/elfutils-0.185
-%patch1 -p1
+%setup -q -n elfutils-0.186
+cd %{_builddir}/elfutils-0.186
 pushd ..
-cp -a elfutils-0.185 build32
+cp -a elfutils-0.186 build32
 popd
 
 %build
@@ -137,7 +135,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1633202285
+export SOURCE_DATE_EPOCH=1642374950
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used "
 export FCFLAGS="$FFLAGS -Os -fdata-sections -ffunction-sections -fno-lto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used "
@@ -175,13 +173,13 @@ cd ../build32;
 make %{?_smp_mflags} check || : || :
 
 %install
-export SOURCE_DATE_EPOCH=1633202285
+export SOURCE_DATE_EPOCH=1642374950
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/elfutils
-cp %{_builddir}/elfutils-0.185/COPYING %{buildroot}/usr/share/package-licenses/elfutils/8624bcdae55baeef00cd11d5dfcfa60f68710a02
-cp %{_builddir}/elfutils-0.185/COPYING-GPLV2 %{buildroot}/usr/share/package-licenses/elfutils/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/elfutils-0.185/COPYING-LGPLV3 %{buildroot}/usr/share/package-licenses/elfutils/f45ee1c765646813b442ca58de72e20a64a7ddba
-cp %{_builddir}/elfutils-0.185/doc/COPYING-GFDL %{buildroot}/usr/share/package-licenses/elfutils/4c0910524984176680adb6b68de639864bc1f8d0
+cp %{_builddir}/elfutils-0.186/COPYING %{buildroot}/usr/share/package-licenses/elfutils/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/elfutils-0.186/COPYING-GPLV2 %{buildroot}/usr/share/package-licenses/elfutils/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/elfutils-0.186/COPYING-LGPLV3 %{buildroot}/usr/share/package-licenses/elfutils/f45ee1c765646813b442ca58de72e20a64a7ddba
+cp %{_builddir}/elfutils-0.186/doc/COPYING-GFDL %{buildroot}/usr/share/package-licenses/elfutils/4c0910524984176680adb6b68de639864bc1f8d0
 pushd ../build32/
 %make_install32
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
@@ -200,24 +198,24 @@ popd
 %make_install
 %find_lang elfutils
 ## Remove excluded files
-rm -f %{buildroot}/usr/bin/addr2line
-rm -f %{buildroot}/usr/bin/ar
-rm -f %{buildroot}/usr/bin/ld
-rm -f %{buildroot}/usr/bin/nm
-rm -f %{buildroot}/usr/bin/objdump
-rm -f %{buildroot}/usr/bin/ranlib
-rm -f %{buildroot}/usr/bin/readelf
-rm -f %{buildroot}/usr/bin/size
-rm -f %{buildroot}/usr/bin/stack
-rm -f %{buildroot}/usr/bin/strings
-rm -f %{buildroot}/usr/bin/strip
-rm -f %{buildroot}/usr/lib32/*.a
-rm -f %{buildroot}/usr/lib64/libasm.a
-rm -f %{buildroot}/usr/lib64/libdw.a
-rm -f %{buildroot}/usr/lib64/libelf.a
-rm -f %{buildroot}/usr/lib64/pkgconfig/libdebuginfod.pc
-rm -f %{buildroot}/usr/lib32/pkgconfig/32libdebuginfod.pc
-rm -f %{buildroot}/usr/lib32/pkgconfig/libdebuginfod.pc
+rm -f %{buildroot}*/usr/bin/addr2line
+rm -f %{buildroot}*/usr/bin/ar
+rm -f %{buildroot}*/usr/bin/ld
+rm -f %{buildroot}*/usr/bin/nm
+rm -f %{buildroot}*/usr/bin/objdump
+rm -f %{buildroot}*/usr/bin/ranlib
+rm -f %{buildroot}*/usr/bin/readelf
+rm -f %{buildroot}*/usr/bin/size
+rm -f %{buildroot}*/usr/bin/stack
+rm -f %{buildroot}*/usr/bin/strings
+rm -f %{buildroot}*/usr/bin/strip
+rm -f %{buildroot}*/usr/lib32/*.a
+rm -f %{buildroot}*/usr/lib64/libasm.a
+rm -f %{buildroot}*/usr/lib64/libdw.a
+rm -f %{buildroot}*/usr/lib64/libelf.a
+rm -f %{buildroot}*/usr/lib64/pkgconfig/libdebuginfod.pc
+rm -f %{buildroot}*/usr/lib32/pkgconfig/32libdebuginfod.pc
+rm -f %{buildroot}*/usr/lib32/pkgconfig/libdebuginfod.pc
 
 %files
 %defattr(-,root,root,-)
@@ -277,20 +275,20 @@ rm -f %{buildroot}/usr/lib32/pkgconfig/libdebuginfod.pc
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libasm-0.185.so
+/usr/lib64/libasm-0.186.so
 /usr/lib64/libasm.so.1
-/usr/lib64/libdw-0.185.so
+/usr/lib64/libdw-0.186.so
 /usr/lib64/libdw.so.1
-/usr/lib64/libelf-0.185.so
+/usr/lib64/libelf-0.186.so
 /usr/lib64/libelf.so.1
 
 %files lib32
 %defattr(-,root,root,-)
-/usr/lib32/libasm-0.185.so
+/usr/lib32/libasm-0.186.so
 /usr/lib32/libasm.so.1
-/usr/lib32/libdw-0.185.so
+/usr/lib32/libdw-0.186.so
 /usr/lib32/libdw.so.1
-/usr/lib32/libelf-0.185.so
+/usr/lib32/libelf-0.186.so
 /usr/lib32/libelf.so.1
 
 %files license

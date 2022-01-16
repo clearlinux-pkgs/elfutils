@@ -56,6 +56,7 @@ libdw.so.1:ELFUTILS_0.171
 libdw.so.1:ELFUTILS_0.173
 libdw.so.1:ELFUTILS_0.175
 libdw.so.1:ELFUTILS_0.177
+libdw.so.1:ELFUTILS_0.186
 libdw.so.1:dwarf_abbrevhaschildren
 libdw.so.1:dwarf_addrdie
 libdw.so.1:dwarf_aggregate_size
@@ -147,9 +148,11 @@ libdw.so.1:dwarf_lineaddr
 libdw.so.1:dwarf_linebeginstatement
 libdw.so.1:dwarf_lineblock
 libdw.so.1:dwarf_linecol
+libdw.so.1:dwarf_linecontext
 libdw.so.1:dwarf_linediscriminator
 libdw.so.1:dwarf_lineendsequence
 libdw.so.1:dwarf_lineepiloguebegin
+libdw.so.1:dwarf_linefunctionname
 libdw.so.1:dwarf_lineisa
 libdw.so.1:dwarf_lineno
 libdw.so.1:dwarf_lineop_index
