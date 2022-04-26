@@ -5,6 +5,6 @@ Configure miss: i686-generic-linux-gnu-readelf
 Configure miss: library containing ZSTD_decompress
 Configure miss: whether fts.h is bad when included (with LFS)
 Configure miss: whether fts.h is bad when included (with LFS)
-Configure miss: whether to add -D_FORTIFY_SOURCE=2 to CFLAGS
-Configure miss: whether to add -D_FORTIFY_SOURCE=2 to CFLAGS
+Configure miss: whether to add -D_FORTIFY_SOURCE=2 or =3 to CFLAGS
+Configure miss: whether to add -D_FORTIFY_SOURCE=2 or =3 to CFLAGS
 Configure miss: x86_64-generic-linux-gnu-readelf
