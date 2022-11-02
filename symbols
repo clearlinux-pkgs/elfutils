@@ -57,6 +57,7 @@ libdw.so.1:ELFUTILS_0.173
 libdw.so.1:ELFUTILS_0.175
 libdw.so.1:ELFUTILS_0.177
 libdw.so.1:ELFUTILS_0.186
+libdw.so.1:ELFUTILS_0.188
 libdw.so.1:dwarf_abbrevhaschildren
 libdw.so.1:dwarf_addrdie
 libdw.so.1:dwarf_aggregate_size
@@ -212,7 +213,9 @@ libdw.so.1:dwfl_end
 libdw.so.1:dwfl_errmsg
 libdw.so.1:dwfl_errno
 libdw.so.1:dwfl_frame_pc
+libdw.so.1:dwfl_frame_reg
 libdw.so.1:dwfl_frame_thread
+libdw.so.1:dwfl_get_debuginfod_client
 libdw.so.1:dwfl_getdwarf
 libdw.so.1:dwfl_getmodules
 libdw.so.1:dwfl_getsrc
@@ -266,6 +269,7 @@ libdw.so.1:dwfl_report_elf
 libdw.so.1:dwfl_report_end
 libdw.so.1:dwfl_report_module
 libdw.so.1:dwfl_report_offline
+libdw.so.1:dwfl_report_offline_memory
 libdw.so.1:dwfl_report_segment
 libdw.so.1:dwfl_standard_argp
 libdw.so.1:dwfl_standard_find_debuginfo
