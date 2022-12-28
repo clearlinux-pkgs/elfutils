@@ -14,3 +14,5 @@ zlib-dev32
 zstd-dev
 lzo-dev
 lz4-dev
+zstd-dev
+zstd-dev32
