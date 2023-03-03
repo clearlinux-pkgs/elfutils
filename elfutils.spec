@@ -6,11 +6,11 @@
 #
 %define keepstatic 1
 Name     : elfutils
-Version  : 0.188
-Release  : 85
-URL      : https://sourceware.org/elfutils/ftp/0.188/elfutils-0.188.tar.bz2
-Source0  : https://sourceware.org/elfutils/ftp/0.188/elfutils-0.188.tar.bz2
-Source1  : https://sourceware.org/elfutils/ftp/0.188/elfutils-0.188.tar.bz2.sig
+Version  : 0.189
+Release  : 86
+URL      : https://sourceware.org/elfutils/ftp/0.189/elfutils-0.189.tar.bz2
+Source0  : https://sourceware.org/elfutils/ftp/0.189/elfutils-0.189.tar.bz2
+Source1  : https://sourceware.org/elfutils/ftp/0.189/elfutils-0.189.tar.bz2.sig
 Summary  : A collection of utilities and DSOs to handle ELF files and DWARF data
 Group    : Development/Tools
 License  : GFDL-1.3 GPL-2.0 GPL-2.0+ GPL-3.0 GPL-3.0+ LGPL-3.0 LGPL-3.0+
@@ -32,7 +32,9 @@ BuildRequires : lz4-dev
 BuildRequires : lzo-dev
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(32libcurl)
+BuildRequires : pkgconfig(32libzstd)
 BuildRequires : pkgconfig(libcurl)
+BuildRequires : pkgconfig(libzstd)
 BuildRequires : procps-ng
 BuildRequires : util-linux
 BuildRequires : xz-dev
@@ -128,10 +130,10 @@ man components for the elfutils package.
 
 
 %prep
-%setup -q -n elfutils-0.188
-cd %{_builddir}/elfutils-0.188
+%setup -q -n elfutils-0.189
+cd %{_builddir}/elfutils-0.189
 pushd ..
-cp -a elfutils-0.188 build32
+cp -a elfutils-0.189 build32
 popd
 
 %build
@@ -139,7 +141,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1672256456
+export SOURCE_DATE_EPOCH=1677865920
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffunction-sections -fno-lto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
 export FCFLAGS="$FFLAGS -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffunction-sections -fno-lto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
@@ -177,7 +179,7 @@ cd ../build32;
 make %{?_smp_mflags} check || : || :
 
 %install
-export SOURCE_DATE_EPOCH=1672256456
+export SOURCE_DATE_EPOCH=1677865920
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/elfutils
 cp %{_builddir}/elfutils-%{version}/COPYING %{buildroot}/usr/share/package-licenses/elfutils/8624bcdae55baeef00cd11d5dfcfa60f68710a02 || :
@@ -279,20 +281,20 @@ rm -f %{buildroot}*/usr/lib32/pkgconfig/libdebuginfod.pc
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libasm-0.188.so
+/usr/lib64/libasm-0.189.so
 /usr/lib64/libasm.so.1
-/usr/lib64/libdw-0.188.so
+/usr/lib64/libdw-0.189.so
 /usr/lib64/libdw.so.1
-/usr/lib64/libelf-0.188.so
+/usr/lib64/libelf-0.189.so
 /usr/lib64/libelf.so.1
 
 %files lib32
 %defattr(-,root,root,-)
-/usr/lib32/libasm-0.188.so
+/usr/lib32/libasm-0.189.so
 /usr/lib32/libasm.so.1
-/usr/lib32/libdw-0.188.so
+/usr/lib32/libdw-0.189.so
 /usr/lib32/libdw.so.1
-/usr/lib32/libelf-0.188.so
+/usr/lib32/libelf-0.189.so
 /usr/lib32/libelf.so.1
 
 %files license
