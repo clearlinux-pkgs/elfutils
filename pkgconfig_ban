@@ -2,3 +2,5 @@
 # but are undesirable. One entry per line, no whitespace.
 libmicrohttpd
 32libmicrohttpd
+liblzma
+32liblzma
